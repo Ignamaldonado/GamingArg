@@ -1,0 +1,30 @@
+.menu{
+    background-color: $background-grey;
+
+    .ui.grid {
+        margin: 0;
+    }
+
+    &-left,
+    &-right {
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .ui.menu {
+        border: 0;
+        box-shadow: none;
+        background: transparent !important;
+        height: 100%;
+        
+        a{
+            color: $font-light;
+
+            &:hover{
+                color: red;
+            }
+        }
+    }
+
+}

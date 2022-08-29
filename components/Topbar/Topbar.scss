@@ -1,0 +1,41 @@
+.top-bar {
+    height: 90px;
+    background-color: $background-grey-dark;
+
+    .ui.grid {
+        margin: 0;
+        padding: 0;
+
+        .column {
+            padding: 0;
+        }
+    }
+
+    &-left {
+        display: flex !important;
+        align-items: center;
+        
+        a{
+            h2 {
+                color:skyblue;
+                transition: all 0.3s;
+
+                span{
+                    color: #fff;
+                }
+
+                &:hover{
+                    transform: translateX(-15px)
+                }
+            }
+        }
+    }
+
+    &-right{
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+     
