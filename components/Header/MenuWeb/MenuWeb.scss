@@ -3,6 +3,7 @@
 
     .ui.grid {
         margin: 0;
+        justify-content: space-between; 
     }
 
     &-left,
@@ -10,21 +11,48 @@
         padding: 0 !important;
         display: flex !important;
         align-items: center !important;
+      
     }
 
     .ui.menu {
         border: 0;
-        box-shadow: none;
+        box-shadow: 0;
         background: transparent !important;
         height: 100%;
-        
-        a{
-            color: $font-light;
+
+        .account-menu{
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 0 !important;
 
             &:hover{
-                color: red;
+                color: $primary;
+                background-color: $background-grey-dark
             }
         }
+        
+        a.item{
+            color: $font-light;
+            margin: 0 5px;
+            border-radius: 0 !important;
+            height: 40px;
+            
+            &:hover{
+                color: $primary;
+                border-bottom: 2px solid $primary;
+                height: 38px;
+                transition: all 0.1s ease;
+            }
+        }
+
     }
 
+    &-right{
+        display: flex;
+        justify-content: flex-end
+    }
+
+
 }
+

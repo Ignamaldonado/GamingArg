@@ -10,7 +10,7 @@ export default function MenuWeb() {
                     <PlatformsMenu />
                 </Grid.Column>
                 <Grid.Column width={6} className='menu-right'>
-                    <h2>usuario</h2>
+                    <MenuOptions />
                 </Grid.Column>
             </Grid>
         </Container>
@@ -23,21 +23,32 @@ function PlatformsMenu() {
         <>
         <Menu>
             <Link href='playstation'>
-                <Menu.Item as='a'>
+                <Menu.Item>
                     Playstation
                 </Menu.Item>
             </Link>
             <Link href='xbox'>
-                <Menu.Item as='a'>
+                <Menu.Item>
                     Xbox
                 </Menu.Item>
             </Link>
             <Link href='switch'>
-                <Menu.Item as='a'>
+                <Menu.Item>
                     Switch
                 </Menu.Item>
             </Link>
         </Menu>
         </>
+    )
+}
+
+function MenuOptions() {
+    return (
+        <Menu>
+            <Menu.Item className='account-menu'>
+                <Icon name='user outline'/>
+                Mi cuenta
+            </Menu.Item>
+        </Menu>
     )
 }
