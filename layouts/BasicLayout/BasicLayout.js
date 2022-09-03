@@ -7,6 +7,7 @@ export default function BasicLayout({ children }) {
     <Header />
     <Container className='content'>
     {children}
+    <h1>hola</h1>
     </Container>
     </Container>
   )
