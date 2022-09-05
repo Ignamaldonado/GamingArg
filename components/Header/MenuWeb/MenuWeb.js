@@ -23,7 +23,7 @@ export default function MenuWeb() {
             </Grid>
         </Container>
         <BasicModal showModal={showModal.active} setShowModal={showModal.setToggle} title={showForm.active ? 'Registrarse' : 'Inicia sesion'} size={'small'}>
-            <Auth show={showForm.active} setLogin={showForm.setFalse} setRegister={showForm.setTrue}/>
+            <Auth show={showForm.active} setShowModal={showModal.setToggle} setLogin={showForm.setFalse} setRegister={showForm.setTrue}/>
         </BasicModal>
     </div>
   )
