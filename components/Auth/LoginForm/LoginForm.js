@@ -3,11 +3,14 @@ import {Form, Button} from 'semantic-ui-react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import {toast} from 'react-toastify'
-import {LoginApi} from '../../../api/user'
+import {LoginApi, resetPasswordApi } from '../../../api/user'
+import useAuth  from '../../../hooks/useAuth'
 
 export default function LoginForm({ showRegister, setShowModal }) {
 
   const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -18,6 +21,7 @@ export default function LoginForm({ showRegister, setShowModal }) {
       setLoading(true)
       const response = await LoginApi(formData)
       if(response?.jwt) {
+        login(response.jwt)
         setShowModal()
         toast.success('Ingresaste con exito!')
       } else {
@@ -26,6 +30,20 @@ export default function LoginForm({ showRegister, setShowModal }) {
       setLoading(false)
     }
   })
+
+  const resetPassword = () => {
+    formik.setErrors({})
+    const validateEmail = Yup.string().email().required()
+
+    if(!validateEmail.isValidSync(formik.values.identifier)) {
+      formik.setErrors({
+        identifier: true
+      })
+      toast.error('Tienes que colocar un email valido')
+    } else {
+      resetPasswordApi(formik.values.identifier)
+    }
+  }
 
   return (
     <Form className="login-form" onSubmit={formik.handleSubmit}>
@@ -47,7 +65,7 @@ export default function LoginForm({ showRegister, setShowModal }) {
         <Button type='button' basic onClick={showRegister}>Registrarse</Button>
         <div>
           <Button type='submit' className='submit' loading={loading}>Ingresar</Button>
-          <Button type='button'>Olvidaste la contraseña?</Button>
+          <Button type='button' onClick={resetPassword}>Olvidaste la contraseña?</Button>
         </div>
       </div>
     </Form>
